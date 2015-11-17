@@ -15,8 +15,8 @@
     },
     "require": {
         "hamjoint/mustard": "@dev",
-        "intervention/image": "2.3^",
-        "webfontkit/open-sans": "1.0^"
+        "intervention/image": "^2.3",
+        "webfontkit/open-sans": "^1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.0"
