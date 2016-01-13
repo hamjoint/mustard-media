@@ -30,8 +30,9 @@ class MediaController extends Controller
     /**
      * Return a photo as a response.
      *
-     * @param integer $photoId
+     * @param int    $photoId
      * @param string $size
+     *
      * @return \Illuminate\Http\Response
      */
     public function getPhoto($photoId, $size = 'large')
@@ -40,9 +41,9 @@ class MediaController extends Controller
 
         switch ($size) {
             case 'large':
-                return response()->download(storage_path() . '/app/' . $photo->pathLarge);
+                return response()->download(storage_path().'/app/'.$photo->pathLarge);
             case 'small':
-                return response()->download(storage_path() . '/app/' . $photo->pathSmall);
+                return response()->download(storage_path().'/app/'.$photo->pathSmall);
         }
 
         abort(404);

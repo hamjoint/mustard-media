@@ -19,8 +19,8 @@ along with Mustard.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class MustardMediaTables extends Migration
 {

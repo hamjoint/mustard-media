@@ -22,9 +22,7 @@ along with Mustard.  If not, see <http://www.gnu.org/licenses/>.
 namespace Hamjoint\Mustard\Media;
 
 use Cache;
-use DomainException;
 use Hamjoint\Mustard\Item;
-use Intervention\Image\Exception\NotReadableException;
 use Intervention\Image\ImageManager;
 use Queue;
 use RuntimeException;
@@ -50,15 +48,20 @@ class Photo extends \Hamjoint\Mustard\NonSequentialIdModel
      * Return the filesystem path for the photo.
      *
      * @param string $suffix
+     *
      * @return string
      */
     public function getPathAttribute($suffix = '')
     {
-        if (!$this->exists) return public_path() . '/images/no-photo.gif';
+        if (!$this->exists) {
+            return public_path().'/images/no-photo.gif';
+        }
 
-        if (!$this->processed) return public_path() . '/images/processing-photo.gif';
+        if (!$this->processed) {
+            return public_path().'/images/processing-photo.gif';
+        }
 
-        return config('mustard.storage.photo.dir', 'mustard/photos') . "/{$this->photoId}$suffix.jpg";
+        return config('mustard.storage.photo.dir', 'mustard/photos')."/{$this->photoId}$suffix.jpg";
     }
 
     /**
@@ -85,6 +88,7 @@ class Photo extends \Hamjoint\Mustard\NonSequentialIdModel
      * Return the public URL for the photo.
      *
      * @param string $suffix
+     *
      * @return string
      */
     public function getUrlAttribute($suffix = '')
@@ -156,6 +160,7 @@ class Photo extends \Hamjoint\Mustard\NonSequentialIdModel
      * Return a placeholder image containing the provided text.
      *
      * @param string $text
+     *
      * @return string
      */
     private static function placeholder($text)
@@ -174,18 +179,19 @@ class Photo extends \Hamjoint\Mustard\NonSequentialIdModel
 
         $image_data = (string) $image->encode('gif');
 
-        return 'data:image/gif;base64,' . base64_encode($image_data);
+        return 'data:image/gif;base64,'.base64_encode($image_data);
     }
 
     /**
      * Process a photo and create a record.
      *
      * @param string $file
+     *
      * @return self
      */
     public static function upload($file)
     {
-        $photo = Photo::create();
+        $photo = self::create();
 
         $image_manager = new ImageManager(['driver' => 'imagick']);
 
@@ -202,9 +208,10 @@ class Photo extends \Hamjoint\Mustard\NonSequentialIdModel
 
         $photo_id = $photo->getKey();
 
-        Queue::push(function($job) use ($file, $quality, $dest_dir, $photo_id)
-        {
-            if (!file_exists($file)) RuntimeException("File $file no longer exists");
+        Queue::push(function ($job) use ($file, $quality, $dest_dir, $photo_id) {
+            if (!file_exists($file)) {
+                RuntimeException("File $file no longer exists");
+            }
 
             $image_manager = new ImageManager(['driver' => 'imagick']);
 
