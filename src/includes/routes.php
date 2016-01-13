@@ -20,8 +20,9 @@ along with Mustard.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 Route::group([
-    'prefix' => env('MUSTARD_BASE', ''),
-    'namespace' => 'Hamjoint\Mustard\Media\Http\Controllers',
+    'middleware' => 'web',
+    'prefix'     => env('MUSTARD_BASE', ''),
+    'namespace'  => 'Hamjoint\Mustard\Media\Http\Controllers',
 ], function () {
     Route::get('photo/{id}/{size?}', ['uses' => 'MediaController@getPhoto']);
     Route::get('video/{id}', ['uses' => 'MediaController@getVideo']);
