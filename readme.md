@@ -1,5 +1,12 @@
 ## Mustard Media module
 
+[![StyleCI](https://styleci.io/repos/45991961/shield?style=flat)](https://styleci.io/repos/45991961)
+[![Build Status](https://travis-ci.org/hamjoint/mustard-media.svg)](https://travis-ci.org/hamjoint/mustard-media)
+[![Total Downloads](https://poser.pugx.org/hamjoint/mustard-media/d/total.svg)](https://packagist.org/packages/hamjoint/mustard-media)
+[![Latest Stable Version](https://poser.pugx.org/hamjoint/mustard-media/v/stable.svg)](https://packagist.org/packages/hamjoint/mustard-media)
+[![Latest Unstable Version](https://poser.pugx.org/hamjoint/mustard-media/v/unstable.svg)](https://packagist.org/packages/hamjoint/mustard-media)
+[![License](https://poser.pugx.org/hamjoint/mustard-media/license.svg)](https://packagist.org/packages/hamjoint/mustard-media)
+
 Photo & video support for [Mustard](http://withmustard.org/), the open source marketplace platform.
 
 ### Installation
