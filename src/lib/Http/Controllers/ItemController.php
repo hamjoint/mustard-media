@@ -31,6 +31,7 @@ class ItemController extends Controller
      * Process and store several photos.
      *
      * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postAddPhotos(Request $request)
@@ -53,6 +54,7 @@ class ItemController extends Controller
      * Delete a photo.
      *
      * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function postDeletePhoto(Request $request)
